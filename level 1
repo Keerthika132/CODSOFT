@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keerthika K | Portfolio</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      margin: 20px auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    section {
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #00bfff;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 0;
+    }
+
+    .skills li {
+      background: rgba(0, 191, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .projects .project {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      margin-top: 15px;
+      border-left: 4px solid #00bfff;
+      border-radius: 8px;
+    }
+
+    .resume-button {
+      background: #00bfff;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .resume-button:hover {
+      background: #0099e6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+    }
+
+    /* Resume Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 10px;
+      width: 90%;
+      max-width: 800px;
+      height: 80vh;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Keerthika K</h1>
+      <p>Web Developer • Python Programmer • Designer</p>
+      <!-- ✅ Correct Profile Picture -->
+      <img src="KEERTHI132.jpj" alt=" " class="profile-img">
+    </header>
+
+    <section>
+      <h2>👩‍💻 About Me</h2>
+      <p>I’m Keerthika K, currently pursuing B.E. in Computer Science. I build real-world websites, automate systems using Python, and enjoy solving problems with code. I also participate in workshops, hackathons, and sports like cricket and football.</p>
+    </section>
+
+    <section class="skills">
+      <h2>💼 Skills</h2>
+      <ul>
+        <li>C</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>MySQL</li>
+      </ul>
+    </section>
+
+    <section class="projects">
+      <h2>📁 Projects</h2>
+      <div class="project">
+        <h3>Online Job Portal</h3>
+        <p>Created using Python to manage job listings, applications, and user accounts.</p>
+      </div>
+      <div class="project">
+        <h3>Hospital Triage System</h3>
+        <p>Priority Queue-based patient management using data structures for emergency handling.</p>
+      </div>
+    </section>
+
+    <section class="resume">
+      <h2>📄 Resume</h2>
+      <p>Click below to view my resume inside the page:</p>
+      <button class="resume-button" onclick="openResume()">Open Resume</button>
+    </section>
+
+    <section class="contact">
+      <h2>📞 Contact</h2>
+      <p>Email: <a href="mailto:keerthika42005@gmail.com" style="color:#00bfff;">keerthika42005@gmail.com</a></p>
+      <p>Phone: +91 6382975132</p>
+      <p>Location: Trichy, Tamil Nadu</p>
+    </section>
+
+    <footer>© 2025 Keerthika K | All Rights Reserved.</footer>
+  </div>
+
+  <!-- Resume Modal -->
+  <div id="resumeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeResume()">&times;</span>
+      <iframe src="resume.pdf"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openResume() {
+      document.getElementById('resumeModal').style.display = 'block';
+    }
+
+    function closeResume() {
+      document.getElementById('resumeModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('resumeModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        closeResume();
+      }
+    });
+  </script>
+</body>
+</html>
